@@ -4,7 +4,10 @@
       "Read(//home/plkz/.claude/plugins/cache/claude-plugins-official/superpowers/5.0.6/skills/subagent-driven-development/**)",
       "Bash(node:*)",
       "Bash(npx tsc:*)",
-      "Bash(npm run:*)"
+      "Bash(npm run:*)",
+      "Bash(wc -l /home/plkz/Escritorio/Hackaton/src/components/*.tsx /home/plkz/Escritorio/Hackaton/src/components/ui/*.tsx)",
+      "WebSearch",
+      "Bash(npm install:*)"
     ]
   }
 }

@@ -32,7 +32,6 @@ export function PurchaseModal({ isOpen, onClose, datasetId, datasetName, tokenPr
 
   useEffect(() => {
     if (status === 'processing') {
-      setTxStep(0);
       const t1 = setTimeout(() => setTxStep(1), 700);
       const t2 = setTimeout(() => setTxStep(2), 1400);
       return () => { clearTimeout(t1); clearTimeout(t2); };
@@ -41,6 +40,7 @@ export function PurchaseModal({ isOpen, onClose, datasetId, datasetName, tokenPr
 
   const handlePurchase = async () => {
     if (!isConnected) return;
+    setTxStep(0);
     setStatus('processing');
     await buyTokens(datasetId, amount);
     setStatus('success');

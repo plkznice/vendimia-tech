@@ -21,9 +21,10 @@ export async function POST(req: NextRequest) {
     client.setOperator(operatorId, operatorKey);
 
     // Build LangChain toolkit with Hedera tools
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const toolkit = new HederaLangchainToolkit({
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       client: client as any,
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       configuration: {} as any,
     });
 
