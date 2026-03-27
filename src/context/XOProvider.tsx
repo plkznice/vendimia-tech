@@ -4,7 +4,13 @@ import { createContext, useContext, useEffect, useState, ReactNode } from "react
 import { XOConnect, XOConnectProvider } from "xo-connect";
 import { ethers } from "ethers";
 
-const xoProvider = new XOConnectProvider({ debug: false });
+const xoProvider = new XOConnectProvider({
+  debug: false,
+  rpcs: {
+    "0x1f": "https://public-node.testnet.rsk.co", // RSK Testnet
+  },
+  defaultChainId: "0x1f",
+});
 
 interface XOContextType {
   address: string | null;
