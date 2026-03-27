@@ -185,7 +185,7 @@ export default function CompanyProjectsPage() {
               </div>
             )}
 
-            {(project.status === "active" || project.status === "delivered") && (
+            {project.status === "delivered" && (
               <div className="mt-4">
                 {releaseError[project.id] && (
                   <p className="text-xs text-red-600 mb-2">{releaseError[project.id]}</p>

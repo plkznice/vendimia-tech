@@ -4,7 +4,8 @@ import { useEffect, useMemo, useState, useSyncExternalStore } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useXO } from "@/context/XOProvider";
-import { GraduationCap, BookOpen, Award, ChevronRight, Wallet, Coins, Bot } from "lucide-react";
+import { WalletModal } from "@/components/WalletModal";
+import { GraduationCap, BookOpen, Award, ChevronRight, Wallet, Coins } from "lucide-react";
 import { useAuth } from "@/context/AuthContext";
 import { createClient } from "@/lib/supabase/client";
 import { Button } from "@/components/ui/Button";
@@ -24,7 +25,8 @@ function subscribe() {
 export default function StudentDashboardPage() {
   const router = useRouter();
   const { user, loading: authLoading } = useAuth();
-  const { address, isConnected, connect, disconnect } = useXO();
+  const { address, isConnected, connectMetaMask, disconnect } = useXO();
+  const [showWalletModal, setShowWalletModal] = useState(false);
   const supabase = useMemo(() => createClient(), []);
 
   const mounted = useSyncExternalStore(subscribe, () => true, () => false);
@@ -102,6 +104,7 @@ export default function StudentDashboardPage() {
 
   return (
     <div className="min-h-screen bg-slate-50">
+      {showWalletModal && <WalletModal onClose={() => setShowWalletModal(false)} />}
       <div className="max-w-4xl mx-auto px-4 sm:px-6 py-10">
 
         {/* Header */}
@@ -213,7 +216,7 @@ export default function StudentDashboardPage() {
                   </Button>
                 </div>
               ) : (
-                <Button size="md" onClick={connect} className="bg-blue-600 hover:bg-blue-700 text-white shadow-md">
+                <Button size="md" onClick={() => setShowWalletModal(true)} className="bg-blue-600 hover:bg-blue-700 text-white shadow-md">
                   Conectar Wallet
                 </Button>
               )
