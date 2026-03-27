@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Plus_Jakarta_Sans, Manrope } from "next/font/google";
 import "./globals.css";
 import { XOProvider } from "@/context/XOProvider";
-import { MarketplaceProvider } from "@/context/MarketplaceContext";
 import { AuthProvider } from "@/context/AuthContext";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
@@ -37,7 +36,6 @@ export default function RootLayout({
       </head>
       <body className="min-h-screen bg-background text-on-background flex flex-col selection:bg-primary-container selection:text-on-primary-container">
         <XOProvider>
-          <MarketplaceProvider>
             <AuthProvider>
               <Navbar />
               <main className="flex-1">
@@ -45,7 +43,6 @@ export default function RootLayout({
               </main>
               <FloatingAgent />
             </AuthProvider>
-          </MarketplaceProvider>
         </XOProvider>
       </body>
     </html>
